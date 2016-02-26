@@ -29,7 +29,7 @@ import java.util.ArrayList;
 /**
  * Created by SnakeJey on 2015-01-27.
  */
-public class NoticeActivity extends Activity {
+public class TNoticeRealtimeActivity extends Activity {
     protected Context ctx = null;
     protected String app_name="";
     //private ListView listView=null;
