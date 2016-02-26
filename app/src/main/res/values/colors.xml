@@ -1,6 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2015. WeNoun™. TANSAN, Since 2014.
+  ~ Code By Jey.
+  -->
+
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="black">#FF000000</color>
+    <color name="red">#FFFF0000</color>
+    <color name="blue">#FF0000FF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="tansan">#FFC5CDFB</color>
+    <color name="tr">#00000000</color>
+    <color name="half_black">#88000000</color>
+    <color name="half_white">#88FFFFFF</color>
+    <color name="half_blue">#880000FF</color>
+    <color name="half_red">#88FF0000</color>
+    <color name="tr_blue">#550000FF</color>
+    <color name="half_tansan">#88C5CDFB</color>
+    <color name="tr_tansan">#55C5CDFB</color>
+    <color name="gray">#FF888888</color>
+
 </resources>
