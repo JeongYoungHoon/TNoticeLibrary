@@ -1,7 +1,9 @@
 package com.wenoun.library.notice;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 
 import com.wenoun.library.notice.activity.TNoticeActivity;
 import com.wenoun.library.notice.activity.TNoticeRealtimeActivity;
@@ -31,33 +33,45 @@ public class TNotice {
         return this;
     }
     public void startService(){
-        if(appName.equals("")||appName.length()<=0)return ;
-        else
-            ctx.startService(new Intent(ctx, TNoticeService.class).putExtra(TNoticeConst.Key.APP_NAME,appName));
+        if(ctx.checkCallingPermission(Manifest.permission.INTERNET)== PackageManager.PERMISSION_GRANTED) {
+            if (appName.equals("") || appName.length() <= 0) return;
+            else
+                ctx.startService(new Intent(ctx, TNoticeService.class).putExtra(TNoticeConst.Key.APP_NAME, appName));
+        }
     }
     public void startActivity(){
-        if(appName.equals("")||appName.length()<=0)return ;
-        else
-            ctx.startActivity(new Intent(ctx, TNoticeActivity.class).putExtra(TNoticeConst.Key.APP_NAME,appName));
+        if(ctx.checkCallingPermission(Manifest.permission.INTERNET)== PackageManager.PERMISSION_GRANTED) {
+            if (appName.equals("") || appName.length() <= 0) return;
+            else
+                ctx.startActivity(new Intent(ctx, TNoticeActivity.class).putExtra(TNoticeConst.Key.APP_NAME, appName));
+        }
     }
     public void startRealtimeActivity(){
-        if(appName.equals("")||appName.length()<=0)return ;
-        else
-            ctx.startActivity(new Intent(ctx, TNoticeRealtimeActivity.class).putExtra(TNoticeConst.Key.APP_NAME,appName));
+        if(ctx.checkCallingPermission(Manifest.permission.INTERNET)== PackageManager.PERMISSION_GRANTED) {
+            if (appName.equals("") || appName.length() <= 0) return;
+            else
+                ctx.startActivity(new Intent(ctx, TNoticeRealtimeActivity.class).putExtra(TNoticeConst.Key.APP_NAME, appName));
+        }
     }
     public static void startService(Context ctx,String appName){
-        if(appName.equals("")||appName.length()<=0)return ;
-        else
-            ctx.startService(new Intent(ctx, TNoticeService.class).putExtra(TNoticeConst.Key.APP_NAME,appName));
+        if(ctx.checkCallingPermission(Manifest.permission.INTERNET)== PackageManager.PERMISSION_GRANTED) {
+            if (appName.equals("") || appName.length() <= 0) return;
+            else
+                ctx.startService(new Intent(ctx, TNoticeService.class).putExtra(TNoticeConst.Key.APP_NAME, appName));
+        }
     }
     public static void startActivity(Context ctx,String appName){
-        if(appName.equals("")||appName.length()<=0)return ;
-        else
-            ctx.startActivity(new Intent(ctx, TNoticeActivity.class).putExtra(TNoticeConst.Key.APP_NAME,appName));
+        if(ctx.checkCallingPermission(Manifest.permission.INTERNET)== PackageManager.PERMISSION_GRANTED) {
+            if (appName.equals("") || appName.length() <= 0) return;
+            else
+                ctx.startActivity(new Intent(ctx, TNoticeActivity.class).putExtra(TNoticeConst.Key.APP_NAME, appName));
+        }
     }
     public static void startRealtimeActivity(Context ctx,String appName){
-        if(appName.equals("")||appName.length()<=0)return ;
-        else
-            ctx.startActivity(new Intent(ctx, TNoticeRealtimeActivity.class).putExtra(TNoticeConst.Key.APP_NAME,appName));
+        if(ctx.checkCallingPermission(Manifest.permission.INTERNET)== PackageManager.PERMISSION_GRANTED) {
+            if (appName.equals("") || appName.length() <= 0) return;
+            else
+                ctx.startActivity(new Intent(ctx, TNoticeRealtimeActivity.class).putExtra(TNoticeConst.Key.APP_NAME, appName));
+        }
     }
 }
