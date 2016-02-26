@@ -3,7 +3,24 @@
   ~ Code By Jey.
   -->
 
-<resources>
+<resources  xmlns:tools="http://schemas.android.com/tools">
+
+
+
+    <style name="TranslucentTheme" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:actionBarStyle" tools:targetApi="14">@style/TansanActionBar</item>
+        <item name="android:colorPrimary" tools:targetApi="21">#ffc5cdfb</item>
+        <item name="android:colorPrimaryDark" tools:targetApi="21">#ffc5cdfb</item>
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="21">true</item>
+        <item name="android:statusBarColor" tools:targetApi="21">#ff99a3dd</item>
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="TansanActionBar" tools:targetApi="14" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+
+        <item name="android:background">#ff99a3dd</item>
+
+    </style>
 
 
     <style name="dialog" parent="@android:style/Theme.Dialog">
