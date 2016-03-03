@@ -13,28 +13,25 @@
     <LinearLayout style="@style/act_menu_bar">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/tr_bg"
-            android:clickable="true"
-            android:onClick="goMain"
-            android:orientation="horizontal"
-            android:paddingLeft="5dip"
-            android:paddingRight="10dip">
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="50dip"
                 android:layout_height="50dip"
                 android:padding="5dip"
-                android:src="@drawable/menu_right" />
+                android:background="@drawable/tr_bg"
+                android:src="@drawable/menu_right"
+                android:clickable="true"
+                android:onClick="goMain"/>
 
             <TextView
                 style="@style/act_menu_bar_back_tv"
                 android:id="@+id/notice_title"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dip"
-                android:layout_weight="0"
+                android:layout_weight="1"
                 android:text="@string/notice"
                 android:textSize="18sp"
                 android:textStyle="bold" />
