@@ -58,7 +58,7 @@ public class List extends BaseFragment {
         });
         showDialog();
         TNotice.startService(getActivity(),parent.getAppName());
-        return inflater.inflate(R.layout.fragment_list,container,false);
+        return root;
     }
     public Dialog getProgressDialog() {
         Dialog dialog = new Dialog(getActivity(), R.style.dialog);

@@ -48,7 +48,7 @@ public class RealtimeList extends BaseFragment {
         showDialog();
         Handler h = new Handler();
         h.postDelayed(new versioncheck_hendler(), 0);
-        return inflater.inflate(R.layout.fragment_list,container,false);
+        return root;
     }
     public Dialog getProgressDialog() {
         Dialog dialog = new Dialog(getActivity(), R.style.dialog);
