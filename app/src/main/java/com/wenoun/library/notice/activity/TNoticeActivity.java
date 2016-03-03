@@ -6,6 +6,7 @@
 package com.wenoun.library.notice.activity;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -109,6 +110,21 @@ public class TNoticeActivity extends Activity {
             }catch(Exception e){}
         }else
             super.onBackPressed();
+    }
+    private Dialog dialog=null;
+    public Dialog getProgressDialog() {
+        Dialog dialog = new Dialog(this, R.style.dialog);
+        dialog.setContentView(R.layout.dialog_progress);
+        dialog.setCanceledOnTouchOutside(false);
+        return dialog;
+    }
+    public void dismissDialog(){
+        if(null!=dialog)
+            dialog.dismiss();
+    }
+    public void showDialog(){
+        dialog=getProgressDialog();
+        dialog.show();
     }
 
 }

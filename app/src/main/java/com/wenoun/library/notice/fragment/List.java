@@ -35,7 +35,7 @@ public class List extends BaseFragment {
 //                scrollView.addView(DB.Notice.getView(ctx));
                 Adapter=DB.Notice.getTitleView(ctx);
                 listView.setAdapter(Adapter);
-                dismissDialog();
+                parent.dismissDialog();
             }
         }
     };
@@ -56,24 +56,24 @@ public class List extends BaseFragment {
                 }
             }
         });
-        showDialog();
+        parent.showDialog();
         TNotice.startService(getActivity(),parent.getAppName());
         return root;
     }
-    public Dialog getProgressDialog() {
-        Dialog dialog = new Dialog(getActivity(), R.style.dialog);
-        dialog.setContentView(R.layout.dialog_progress);
-        dialog.setCanceledOnTouchOutside(false);
-        return dialog;
-    }
-    public void dismissDialog(){
-        if(null!=dialog)
-            dialog.dismiss();
-    }
-    public void showDialog(){
-        dialog=getProgressDialog();
-        dialog.show();
-    }
+//    public Dialog getProgressDialog() {
+//        Dialog dialog = new Dialog(getActivity(), R.style.dialog);
+//        dialog.setContentView(R.layout.dialog_progress);
+//        dialog.setCanceledOnTouchOutside(false);
+//        return dialog;
+//    }
+//    public void dismissDialog(){
+//        if(null!=dialog)
+//            dialog.dismiss();
+//    }
+//    public void showDialog(){
+//        dialog=getProgressDialog();
+//        dialog.show();
+//    }
     @Override
     public void onResume() {
         super.onResume();

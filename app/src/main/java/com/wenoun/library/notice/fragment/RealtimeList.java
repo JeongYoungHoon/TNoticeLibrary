@@ -1,6 +1,5 @@
 package com.wenoun.library.notice.fragment;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -24,7 +23,7 @@ import java.util.ArrayList;
  * Created by jeyhoon on 16. 3. 3..
  */
 public class RealtimeList extends BaseFragment {
-    private Dialog dialog=null;
+
     private static View root;
     private ListView listView;
     protected ArrayList<Noti> arrlist = new ArrayList<Noti>();
@@ -45,25 +44,12 @@ public class RealtimeList extends BaseFragment {
                 }
             }
         });
-        showDialog();
+        parent.showDialog();
         Handler h = new Handler();
         h.postDelayed(new versioncheck_hendler(), 0);
         return root;
     }
-    public Dialog getProgressDialog() {
-        Dialog dialog = new Dialog(parent, R.style.dialog);
-        dialog.setContentView(R.layout.dialog_progress);
-        dialog.setCanceledOnTouchOutside(false);
-        return dialog;
-    }
-    public void dismissDialog(){
-        if(null!=dialog)
-            dialog.dismiss();
-    }
-    public void showDialog(){
-        dialog=getProgressDialog();
-        dialog.show();
-    }
+
     public void getNotice() {
         String tmp = parent.getAppName();
         String url = "http://noti.wenoun.com/select_noti.php?app_name=" + tmp;
@@ -75,11 +61,11 @@ public class RealtimeList extends BaseFragment {
                 switch (msg.what) {
                     case 0: // 성공
                         String result1 = (String) msg.obj;
-                        dismissDialog();
+                        parent.dismissDialog();
                         break;
                     case 1: // 실패
                         String result2 = (String) msg.obj;
-                        dismissDialog();
+                        parent.dismissDialog();
                         break;
                     case 2: // getJSON성공
 
@@ -121,11 +107,11 @@ public class RealtimeList extends BaseFragment {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
-                        dismissDialog();
+                        parent.dismissDialog();
                         break;
                     case 3: // getJSON실패
                         String jsonStr2 = (String) msg.obj;
-                        dismissDialog();
+                        parent.dismissDialog();
                         break;
                 }
             }
