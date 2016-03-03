@@ -17,6 +17,8 @@ import android.widget.TextView;
 import com.wenoun.library.notice.R;
 import com.wenoun.library.notice.TNoticeConst;
 import com.wenoun.library.notice.fragment.Detail;
+import com.wenoun.library.notice.fragment.List;
+import com.wenoun.library.notice.fragment.RealtimeList;
 
 
 /**
@@ -44,6 +46,10 @@ public class TNoticeActivity extends Activity {
         }
         setContentView(R.layout.layout_notice);
         fragmentManager = getFragmentManager();
+        if(isRealtime)
+            setFragment(new RealtimeList(),getString(R.string.notice));
+        else
+            setFragment(new List(),getString(R.string.notice));
 //        scrollView=(ScrollView)findViewById(R.id.notice_sv);
 //        showDialog();
 
@@ -87,7 +93,7 @@ public class TNoticeActivity extends Activity {
         super.onDestroy();
     }
     public void goMain(View v){
-        finish();
+        onBackPressed();
     }
 
     public void setTitle(String title){
