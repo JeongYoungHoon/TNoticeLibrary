@@ -146,18 +146,18 @@ public class RealtimeList extends BaseFragment {
             /*logoIv.setVisibility(View.GONE);
             Animation frontAni=AnimationUtils.loadAnimation(ctx,R.anim.front_alpha);
             splashIv.startAnimation(frontAni);*/
-            dialog = getProgressDialog();
-            dialog.show();
+//            dialog = getProgressDialog();
+//            dialog.show();
             new Thread(new Runnable() {
                 public void run() {
                     // TODO Auto-generated method stub
 
-
-                    try {
-                        Thread.sleep(50);
-                    } catch (Throwable ex) {
-                        ex.printStackTrace();
-                    }
+//
+//                    try {
+//                        Thread.sleep(00);
+//                    } catch (Throwable ex) {
+//                        ex.printStackTrace();
+//                    }
                     getNotice();
                     //CheckVersion();
 
