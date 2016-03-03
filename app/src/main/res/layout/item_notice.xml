@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/white"
-        android:clickable="true"
         android:gravity="center_vertical"
         android:padding="10dip">
 
@@ -47,7 +46,7 @@
             android:padding="10dip"
             android:layout_marginLeft="5dip"
             android:src="@drawable/btn_menu_arr_whiteblack"
-            android:background="@drawable/tr_bg"/>
+            android:background="@color/white"/>
         </LinearLayout>
 
     <!--<LinearLayout-->

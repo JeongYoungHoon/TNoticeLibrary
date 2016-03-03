@@ -51,7 +51,7 @@ public class RealtimeList extends BaseFragment {
         return root;
     }
     public Dialog getProgressDialog() {
-        Dialog dialog = new Dialog(getActivity(), R.style.dialog);
+        Dialog dialog = new Dialog(parent, R.style.dialog);
         dialog.setContentView(R.layout.dialog_progress);
         dialog.setCanceledOnTouchOutside(false);
         return dialog;
