@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TNoticeLibrary</string>
+    <string name="notice">Notice</string>
 </resources>

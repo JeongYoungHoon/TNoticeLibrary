@@ -7,14 +7,9 @@ package com.wenoun.library.notice.db;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.wenoun.library.notice.R;
 import com.wenoun.library.notice.data.Noti;
+import com.wenoun.library.notice.data.NotiDataAdapter;
 
 import java.util.ArrayList;
 
@@ -167,55 +162,63 @@ public class DB {
             return result;
         }
 
-        private static View getChildView(Context ctx, Noti data) {
-            final View view;
-            LayoutInflater mInflater;
-            mInflater = (LayoutInflater) ctx
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = mInflater.inflate(R.layout.noti_list_item, null);
-            ((TextView) view.findViewById(R.id.noti_title_title_tv)).setText(data.getTitle());
-            ((TextView) view.findViewById(R.id.noti_title_date_tv)).setText(data.getDate());
-            ((TextView) view.findViewById(R.id.noti_msg_msg_tv)).setText(data.getMsg());
-            (view.findViewById(R.id.noti_title_layout)).setOnClickListener(new View.OnClickListener() {
+//        private static View getChildView(Context ctx, Noti data) {
+//            final View view;
+//            LayoutInflater mInflater;
+//            mInflater = (LayoutInflater) ctx
+//                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//            view = mInflater.inflate(R.layout.item_notice, null);
+//            ((TextView) view.findViewById(R.id.noti_title_title_tv)).setText(data.getTitle());
+//            ((TextView) view.findViewById(R.id.noti_title_date_tv)).setText(data.getDate());
+////            ((TextView) view.findViewById(R.id.noti_msg_msg_tv)).setText(data.getMsg());
+//            (view.findViewById(R.id.noti_title_layout)).setOnClickListener(new View.OnClickListener() {
+//
+//                @Override
+//                public void onClick(View v) {
+//                    View msgView = view.findViewById(R.id.noti_msg_layout);
+//                    ImageView btn = (ImageView) view.findViewById(R.id.noti_title_down_btn);
+//                    if (msgView.getVisibility() == View.VISIBLE) {
+////                        msgView.setVisibility(View.GONE);
+////                        btn.setImageResource(R.drawable.btn_down);
+//                    } else {
+////                        msgView.setVisibility(View.VISIBLE);
+////                        btn.setImageResource(R.drawable.btn_up);
+//                    }
+//                }
+//            });
+//            return view;
+//        }
 
-                @Override
-                public void onClick(View v) {
-                    View msgView = view.findViewById(R.id.noti_msg_layout);
-                    ImageView btn = (ImageView) view.findViewById(R.id.noti_title_down_btn);
-                    if (msgView.getVisibility() == View.VISIBLE) {
-                        msgView.setVisibility(View.GONE);
-                        btn.setImageResource(R.drawable.btn_down);
-                    } else {
-                        msgView.setVisibility(View.VISIBLE);
-                        btn.setImageResource(R.drawable.btn_up);
-                    }
-                }
-            });
-            return view;
-        }
-
-        public static View getView(Context ctx) {
-            LinearLayout root = new LinearLayout(ctx);
-            root.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-            root.setOrientation(LinearLayout.VERTICAL);
+        public static NotiDataAdapter getFullView(Context ctx) {
             ArrayList<Noti> arrlist=getFullNotiListArray(ctx);
-            for(int i=arrlist.size()-1; i>=0;i--){
-                root.addView(getChildView(ctx,arrlist.get(i)));
-            }
-
-            return root;
+            return new NotiDataAdapter(ctx,arrlist);
         }
-        public static View getView(Context ctx, ArrayList<Noti> arrlist) {
-            LinearLayout root = new LinearLayout(ctx);
-            root.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-            root.setOrientation(LinearLayout.VERTICAL);
-            //ArrayList<Noti> arrlist=getFullNotiListArray(ctx);
-            for(int i=arrlist.size()-1; i>=0;i--){
-                root.addView(getChildView(ctx,arrlist.get(i)));
-            }
-
-            return root;
+        public static NotiDataAdapter getTitleView(Context ctx) {
+            ArrayList<Noti> arrlist=getTitleNotiListArray(ctx);
+            return new NotiDataAdapter(ctx,arrlist);
         }
+//        public static View getView(Context ctx) {
+//            LinearLayout root = new LinearLayout(ctx);
+//            root.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+//            root.setOrientation(LinearLayout.VERTICAL);
+//            ArrayList<Noti> arrlist=getFullNotiListArray(ctx);
+//            for(int i=arrlist.size()-1; i>=0;i--){
+//                root.addView(getChildView(ctx,arrlist.get(i)));
+//            }
+//
+//            return root;
+//        }
+//        public static View getView(Context ctx, ArrayList<Noti> arrlist) {
+//            LinearLayout root = new LinearLayout(ctx);
+//            root.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+//            root.setOrientation(LinearLayout.VERTICAL);
+//            //ArrayList<Noti> arrlist=getFullNotiListArray(ctx);
+//            for(int i=arrlist.size()-1; i>=0;i--){
+//                root.addView(getChildView(ctx,arrlist.get(i)));
+//            }
+//
+//            return root;
+//        }
     }
 
 }

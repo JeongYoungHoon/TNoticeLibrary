@@ -12,12 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wenoun.library.notice.R;
-import com.wenoun.library.notice.db.DB;
 
 import java.lang.ref.WeakReference;
 import java.text.Collator;
@@ -59,15 +57,15 @@ public class NotiDataAdapter extends ArrayAdapter<Noti> {
         final Noti data = this.getItem(position);
         View view = null;
         if (v == null) {
-            view = mInflater.inflate(R.layout.noti_list_item, null);
+            view = mInflater.inflate(R.layout.item_notice, null);
             holder = new CustomViewHolder();
             // XML 레이아웃을 직접 읽어서 리스트뷰에 넣음
             holder.titleTv = (TextView) view.findViewById(R.id.noti_title_title_tv);
             holder.dateTv = (TextView) view.findViewById(R.id.noti_title_date_tv);
-            holder.msgTv = (TextView) view.findViewById(R.id.noti_msg_msg_tv);
-            holder.titleView = view.findViewById(R.id.noti_title_layout);
-            holder.msgView = view.findViewById(R.id.noti_msg_layout);
-            holder.btn = (ImageView) view.findViewById(R.id.noti_title_down_btn);
+//            holder.msgTv = (TextView) view.findViewById(R.id.noti_msg_msg_tv);
+//            holder.titleView = view.findViewById(R.id.noti_title_layout);
+//            holder.msgView = view.findViewById(R.id.noti_msg_layout);
+//            holder.btn = (ImageView) view.findViewById(R.id.noti_title_down_btn);
             view.setTag(holder);
         } else {
             view = v;
@@ -77,21 +75,6 @@ public class NotiDataAdapter extends ArrayAdapter<Noti> {
             holder.titleTv.setText(data.getTitle());
             holder.dateTv.setText(data.getDate());
             //holder.msgTv.setText(data.getMsg());
-            holder.titleView.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    if (holder.msgView.getVisibility() == View.VISIBLE) {
-                        holder.msgView.setVisibility(View.GONE);
-                        holder.btn.setImageResource(R.drawable.btn_down);
-                    } else {
-                        data.setMsg(DB.Notice.getMsgFromNo(ctx,data.getNo()));
-                        holder.msgTv.setText(data.getMsg());
-                        holder.msgView.setVisibility(View.VISIBLE);
-                        holder.btn.setImageResource(R.drawable.btn_up);
-                    }
-                }
-            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -102,10 +85,10 @@ public class NotiDataAdapter extends ArrayAdapter<Noti> {
     public class CustomViewHolder {
         public TextView titleTv;
         public TextView dateTv;
-        public TextView msgTv;
-        public ImageView btn;
-        public View msgView;
-        public View titleView;
+//        public TextView msgTv;
+//        public ImageView btn;
+//        public View msgView;
+//        public View titleView;
     }
 
     public static final Comparator<Noti> ALPHA_COMPARATOR = new Comparator<Noti>() {

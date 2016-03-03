@@ -6,6 +6,7 @@ package com.wenoun.library.notice;
 public class TNoticeConst {
     public static class Key{
         public static final String APP_NAME="app_name";
+        public static final String IS_REALTIME="is_realtime";
     }
     public static class Action{
         public static final String NEW_NOTICE="com.wenoun.library.notice.NEW_NOTICE";

@@ -8,28 +8,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white">
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dip"
-        android:background="@color/tr_blue"/>
+
     <LinearLayout
         android:id="@+id/noti_title_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/tr_tansan"
+        android:background="@color/white"
         android:clickable="true"
         android:gravity="center_vertical"
-        android:padding="6dip">
-        <ImageView
-            android:id="@+id/noti_title_down_btn"
-            android:layout_width="50dip"
-            android:layout_height="50dip"
-            android:layout_weight="0"
-            android:padding="10dip"
-            android:layout_marginRight="5dip"
-            android:src="@drawable/btn_down"
-            android:background="@drawable/tr_bg"/>
+        android:padding="10dip">
+
         <TextView
             android:id="@+id/noti_title_title_tv"
             android:layout_width="match_parent"
@@ -50,25 +39,38 @@
             android:gravity="bottom"
             android:textSize="14sp"
             android:text="15.01.01"/>
+        <ImageView
+            android:id="@+id/noti_title_down_btn"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:layout_weight="0"
+            android:padding="10dip"
+            android:layout_marginLeft="5dip"
+            android:src="@drawable/btn_menu_arr_whiteblack"
+            android:background="@drawable/tr_bg"/>
         </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/noti_msg_layout"
-        android:visibility="gone">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dip"
-            android:background="@color/tr_blue"/>
-        <TextView
-            android:padding="10dip"
-            android:id="@+id/noti_msg_msg_tv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:text="msg"/>
-        </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--android:id="@+id/noti_msg_layout"-->
+        <!--android:visibility="gone">-->
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dip"-->
+            <!--android:background="@color/tr_blue"/>-->
+        <!--<TextView-->
+            <!--android:padding="10dip"-->
+            <!--android:id="@+id/noti_msg_msg_tv"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:textSize="16sp"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:text="msg"/>-->
+        <!--</LinearLayout>-->
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dip"-->
+        <!--android:background="@color/tansan"/>-->
 </LinearLayout>

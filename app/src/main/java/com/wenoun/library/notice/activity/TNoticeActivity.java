@@ -6,20 +6,17 @@
 package com.wenoun.library.notice.activity;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.BroadcastReceiver;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
-import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.wenoun.library.notice.R;
-import com.wenoun.library.notice.TNotice;
 import com.wenoun.library.notice.TNoticeConst;
-import com.wenoun.library.notice.db.DB;
+import com.wenoun.library.notice.fragment.Detail;
 
 
 /**
@@ -27,18 +24,12 @@ import com.wenoun.library.notice.db.DB;
  */
 public class TNoticeActivity extends Activity {
     private Context ctx=null;
-    private ScrollView scrollView=null;
+//    private ScrollView scrollView=null;
     private String appName="";
-    private Dialog dialog=null;
-    private BroadcastReceiver noticeReceiver=new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if(intent.getAction().equals(TNoticeConst.Action.GET_NOTICE_FINISH)){
-                scrollView.addView(DB.Notice.getView(ctx));
-                dismissDialog();
-            }
-        }
-    };
+    private int notiNo=-1;
+    private boolean isRealtime=false;
+    private FragmentManager fragmentManager=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,38 +39,48 @@ public class TNoticeActivity extends Activity {
         }else{
             finish();
         }
-        setContentView(R.layout.notice_layout);
-        scrollView=(ScrollView)findViewById(R.id.notice_sv);
-        showDialog();
-        TNotice.startService(ctx,appName);
+        if(getIntent().hasExtra(TNoticeConst.Key.IS_REALTIME)){
+            isRealtime=getIntent().getExtras().getBoolean(TNoticeConst.Key.IS_REALTIME);
+        }
+        setContentView(R.layout.layout_notice);
+        fragmentManager = getFragmentManager();
+//        scrollView=(ScrollView)findViewById(R.id.notice_sv);
+//        showDialog();
+
 
     }
-    public Dialog getProgressDialog() {
-        Dialog dialog = new Dialog(this, R.style.dialog);
-        dialog.setContentView(R.layout.dialog_progress);
-        dialog.setCanceledOnTouchOutside(false);
-        return dialog;
+    public String getAppName(){
+        return this.appName;
     }
-    public void dismissDialog(){
-        if(null!=dialog)
-            dialog.dismiss();
+    public int getNotiNo(){
+        return this.notiNo;
     }
-    public void showDialog(){
-        dialog=getProgressDialog();
-        dialog.show();
+    public void setFragment(Fragment fragment){
+        setFragment(fragment,"");
+    }
+    public void setFragment(Fragment fragment,String title){
+        setTitle(title);
+        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.notice_fragment, fragment);
+        fragmentTransaction.commit();
+    }
+    public void addFragment(Fragment fragment, String title){
+        setTitle(title);
+        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.notice_fragment, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+    public void addFragment(Fragment fragment){
+        addFragment(fragment,"");
+    }
+    public void showDetail(String title,int idx){
+        notiNo=idx;
+        addFragment(new Detail(),title);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        LocalBroadcastManager.getInstance(this).registerReceiver(noticeReceiver,new IntentFilter(TNoticeConst.Action.GET_NOTICE_FINISH));
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(noticeReceiver);
-    }
+
 
     @Override
     protected void onDestroy() {
@@ -87,6 +88,21 @@ public class TNoticeActivity extends Activity {
     }
     public void goMain(View v){
         finish();
+    }
+
+    public void setTitle(String title){
+        ((TextView)findViewById(R.id.notice_title)).setText(title);
+    }
+    @Override
+    public void onBackPressed() {
+        if(fragmentManager.getBackStackEntryCount()>0) {
+            fragmentManager.popBackStack();
+            try {
+                setTitle(getString(R.string.notice));
+                notiNo=-1;
+            }catch(Exception e){}
+        }else
+            super.onBackPressed();
     }
 
 }
