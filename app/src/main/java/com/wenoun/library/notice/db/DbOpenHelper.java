@@ -179,6 +179,18 @@ public class DbOpenHelper {
 		c.close();
 		return result;
 	}
+	public String getDateFromNo(int no) {
+		Cursor c = getMatchNo(no);
+		String result = "";
+		c.moveToNext();
+		try{
+			result = c.getString(c.getColumnIndex(DataBases.CreateNotiDB.DATE));
+		}catch(Exception e){
+			result="";
+		}
+		c.close();
+		return result;
+	}
 
 	public boolean delNo(int no) {
 		boolean result = false;

@@ -110,6 +110,15 @@ public class DB {
             mDbOpenHelper.close();
             return data;
         }
+        public static String getDateFromNo(Context ctx, int no) {
+            String data = null;
+            DbOpenHelper mDbOpenHelper;
+            mDbOpenHelper = new DbOpenHelper(ctx);
+            mDbOpenHelper.open();
+            data = mDbOpenHelper.getDateFromNo(no);
+            mDbOpenHelper.close();
+            return data;
+        }
 
         public static boolean isNo(Context ctx, int no) {
             boolean result = false;

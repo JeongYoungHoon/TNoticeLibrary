@@ -71,7 +71,7 @@ public class List extends BaseFragment {
 //            dialog.dismiss();
 //    }
 //    public void showDialog(){
-//        dialog=getProgressDialog();
+//        dialog=geasdftProgressDialog();
 //        dialog.show();
 //    }
     @Override

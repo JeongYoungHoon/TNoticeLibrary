@@ -24,6 +24,7 @@ public class Detail extends BaseFragment {
         }catch(Exception e){}
         if(parent.getNotiNo()!=-1){
             ((TextView)root.findViewById(R.id.detail_msg)).setText(DB.Notice.getMsgFromNo(ctx,parent.getNotiNo()));
+            ((TextView)root.findViewById(R.id.detail_date)).setText(DB.Notice.getDateFromNo(ctx,parent.getNotiNo()));
         }
         return root;
     }
