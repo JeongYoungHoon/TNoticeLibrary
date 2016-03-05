@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.wenoun.library.notice.R;
 import com.wenoun.library.notice.db.DB;
 
+
 /**
  * Created by jeyhoon on 16. 3. 3..
  */

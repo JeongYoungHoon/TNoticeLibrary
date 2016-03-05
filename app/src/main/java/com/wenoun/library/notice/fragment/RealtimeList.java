@@ -13,11 +13,13 @@ import android.widget.ListView;
 import com.wenoun.library.notice.GetJSONThread;
 import com.wenoun.library.notice.R;
 import com.wenoun.library.notice.data.Noti;
+import com.wenoun.library.notice.data.NotiDataAdapter;
 import com.wenoun.library.notice.db.DB;
 
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by jeyhoon on 16. 3. 3..
@@ -45,8 +47,9 @@ public class RealtimeList extends BaseFragment {
             }
         });
         parent.showDialog();
-        Handler h = new Handler();
-        h.postDelayed(new versioncheck_hendler(), 0);
+        getNotice();
+//        Handler h = new Handler();
+//        h.postDelayed(new versioncheck_hendler(), 0);
         return root;
     }
 
@@ -93,6 +96,7 @@ public class RealtimeList extends BaseFragment {
                                     date = obj.getString("date");
                                     arrlist.add(new Noti(no, title, notiMsg, date));
                                 }
+                                Collections.sort(arrlist, NotiDataAdapter.ALPHA_COMPARATOR);
                                 DB.Notice.insertSyncNotiArray(ctx, arrlist);
                                 listView.setAdapter(DB.Notice.getTitleView(ctx));
 //                                scrollView.addView(DB.Notice.getView(ctx));

@@ -14,9 +14,10 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.wenoun.library.notice.data.Noti;
+import com.wenoun.library.notice.data.NotiDataAdapter;
 
 import java.util.ArrayList;
-
+import java.util.Collections;
 
 
 public class DbOpenHelper {
@@ -201,6 +202,7 @@ public class DbOpenHelper {
 			arrlist.add(new Noti(no, title, msg, date));
 		}
 		c.close();
+		Collections.sort(arrlist, NotiDataAdapter.ALPHA_COMPARATOR);
 		return arrlist;
 	}
     public ArrayList<Noti> getTitleNotiListArray() {
@@ -215,6 +217,7 @@ public class DbOpenHelper {
             arrlist.add(new Noti(no, title, msg, date));
         }
         c.close();
+		Collections.sort(arrlist, NotiDataAdapter.ALPHA_COMPARATOR);
         return arrlist;
     }
 

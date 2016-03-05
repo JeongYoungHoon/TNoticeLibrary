@@ -5,13 +5,13 @@
 
 package com.wenoun.library.notice.activity;
 
-import android.app.Activity;
 import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.TextView;
 
@@ -25,7 +25,7 @@ import com.wenoun.library.notice.fragment.RealtimeList;
 /**
  * Created by SnakeJey on 2015-01-27.
  */
-public class TNoticeActivity extends Activity {
+public class TNoticeActivity extends FragmentActivity {
     private Context ctx=null;
 //    private ScrollView scrollView=null;
     private String appName="";
@@ -46,7 +46,7 @@ public class TNoticeActivity extends Activity {
             isRealtime=getIntent().getExtras().getBoolean(TNoticeConst.Key.IS_REALTIME);
         }
         setContentView(R.layout.layout_notice);
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         if(isRealtime)
             setFragment(new RealtimeList(),getString(R.string.notice));
         else

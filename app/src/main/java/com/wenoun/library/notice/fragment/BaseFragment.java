@@ -1,8 +1,10 @@
 package com.wenoun.library.notice.fragment;
 
-import android.app.Fragment;
+//import android.app.Fragment;
+
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
 import com.wenoun.library.notice.activity.TNoticeActivity;
 
