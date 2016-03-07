@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TNoticeLibrary</string>
     <string name="notice">공지사항</string>
 </resources>

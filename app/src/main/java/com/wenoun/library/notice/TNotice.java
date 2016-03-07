@@ -43,7 +43,7 @@ public class TNotice {
             if (appName.equals("") || appName.length() <= 0) return;
             else
                 ctx.startActivity(new Intent(ctx, TNoticeActivity.class).putExtra(TNoticeConst.Key.APP_NAME, appName)
-                        .putExtra(TNoticeConst.Key.IS_REALTIME,false));
+                        .putExtra(TNoticeConst.Key.IS_REALTIME,false).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }
     public void startRealtimeActivity(){
@@ -51,7 +51,7 @@ public class TNotice {
             if (appName.equals("") || appName.length() <= 0) return;
             else
                 ctx.startActivity(new Intent(ctx, TNoticeActivity.class).putExtra(TNoticeConst.Key.APP_NAME, appName)
-                        .putExtra(TNoticeConst.Key.IS_REALTIME,true));
+                        .putExtra(TNoticeConst.Key.IS_REALTIME,true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }
     public static void startService(Context ctx,String appName){
@@ -66,7 +66,7 @@ public class TNotice {
             if (appName.equals("") || appName.length() <= 0) return;
             else
                 ctx.startActivity(new Intent(ctx, TNoticeActivity.class).putExtra(TNoticeConst.Key.APP_NAME, appName)
-                        .putExtra(TNoticeConst.Key.IS_REALTIME,false));
+                        .putExtra(TNoticeConst.Key.IS_REALTIME,false).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }
     public static void startRealtimeActivity(Context ctx,String appName){
@@ -74,7 +74,7 @@ public class TNotice {
             if (appName.equals("") || appName.length() <= 0) return;
             else
                 ctx.startActivity(new Intent(ctx, TNoticeActivity.class).putExtra(TNoticeConst.Key.APP_NAME, appName)
-                        .putExtra(TNoticeConst.Key.IS_REALTIME,true));
+                        .putExtra(TNoticeConst.Key.IS_REALTIME,true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         }
     }
 }

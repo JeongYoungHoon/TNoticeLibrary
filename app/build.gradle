@@ -4,7 +4,7 @@ publish {
     userOrg = 'jeyechoo'
     groupId = 'com.wenoun.library'
     artifactId = 'TNoticeLibrary'
-    publishVersion = '1.0.5'
+    publishVersion = '1.1.0'
     desc = ''
     website = 'https://github.com/JeongYoungHoon/TNoticeLibrary'
     issueTracker = "${website}/issues"

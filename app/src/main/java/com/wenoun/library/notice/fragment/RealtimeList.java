@@ -28,7 +28,8 @@ public class RealtimeList extends BaseFragment {
 
     private static View root;
     private ListView listView;
-    protected ArrayList<Noti> arrlist = new ArrayList<Noti>();
+//    protected ArrayList<Noti> arrlist = new ArrayList<Noti>();
+    private NotiDataAdapter Adapter=null;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,8 +42,8 @@ public class RealtimeList extends BaseFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> p, View view, int position, long id) {
-                if(arrlist.size()>0){
-                    parent.showDetail(arrlist.get(position).getTitle(),arrlist.get(position).getNo());
+                if(Adapter.getCount()>0){
+                    parent.showDetail(Adapter.getItem(position).getTitle(),Adapter.getItem(position).getNo());
                 }
             }
         });
@@ -84,6 +85,7 @@ public class RealtimeList extends BaseFragment {
                             // JSONArray 객체 얻어오기
                             result = jsonObj.getString("result");
                             Log.d("NotiAct", jsonObj.toString() + "");
+                            ArrayList<Noti> arrlist = new ArrayList<Noti>();
                             //JSONArray jsonArray=new JSONArray(jsonStr1);
                             if (result.equals("FINISH")) {
                                 for (int i = 0; i < jsonObj.length() - 1; i++) {
@@ -98,7 +100,9 @@ public class RealtimeList extends BaseFragment {
                                 }
                                 Collections.sort(arrlist, NotiDataAdapter.ALPHA_COMPARATOR);
                                 DB.Notice.insertSyncNotiArray(ctx, arrlist);
-                                listView.setAdapter(DB.Notice.getTitleView(ctx));
+                                if(null!=Adapter) Adapter.clear();
+                                Adapter=new NotiDataAdapter(ctx,arrlist);
+                                listView.setAdapter(Adapter);
 //                                scrollView.addView(DB.Notice.getView(ctx));
                                 //Adapter=new NotiDataAdapter(ctx,arrlist);
                                 //listView.setAdapter(Adapter);

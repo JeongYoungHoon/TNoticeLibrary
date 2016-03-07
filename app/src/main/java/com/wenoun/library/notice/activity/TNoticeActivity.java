@@ -29,7 +29,7 @@ public class TNoticeActivity extends FragmentActivity {
     private Context ctx=null;
 //    private ScrollView scrollView=null;
     private String appName="";
-    private int notiNo=-1;
+    private static int notiNo=-1;
     private boolean isRealtime=false;
     private FragmentManager fragmentManager=null;
 
